@@ -23,7 +23,7 @@ import Heart from "react-animated-heart";
   {
     return(
      
-       <div> 
+       <div classname="homepage"> 
          <Container  className = "buttonscontainer">
            <Row >
              <Col align = "right" >
@@ -53,17 +53,38 @@ import Heart from "react-animated-heart";
         <Row   className ="cards">
             <Col sm="2">
             </Col>
-            <Col>
+            <Col sm="2">
             <PetCard name="Lucky" src={lucky}/>
             </Col>
-            <Col>
+            <Col sm="2">
             <PetCard name="Azorel" src={azorel}/>
             </Col>
-            <Col>
+            <Col sm="2">
+            <PetCard name="Miti" src= {pisica1} />
+            </Col>
+            <Col sm="2">
             <PetCard name="Miti" src= {pisica1} />
             </Col>
 
           </Row>
+          <Row   className ="lastrowcards">
+            <Col sm="2">
+            </Col>
+            <Col sm="2">
+            <PetCard name="Lucky" src={lucky}/>
+            </Col>
+            <Col sm="2">
+            <PetCard name="Azorel" src={azorel}/>
+            </Col>
+            <Col sm="2">
+            <PetCard name="Miti" src= {pisica1} />
+            </Col>
+            <Col sm="2">
+            <PetCard name="Miti" src= {pisica1} />
+            </Col>
+
+          </Row>
+          
         <Row>
           <Col>
           <FooterPage />

@@ -1,6 +1,7 @@
 import React from 'react';
 import HomePage from './components/HomePage/HomePage';
 import NavbarPage from './components/NavigationBar/NavigationBar';
+import SearchBar from './components/SearchBar/SearchBar';
 import CarouselPage from './components/Carousel/Carousel'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
   {
     return(
 
-        <HomePage />
+        <HomePage/>
 
     );
   };
