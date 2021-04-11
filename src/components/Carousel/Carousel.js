@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Carousel} from 'react-bootstrap';
 import './Carousel.css';
-import {Container,Row,Col} from 'react-bootstrap';
+import {Container,Row,Col,Button} from 'react-bootstrap';
 class CarouselPage extends Component {
 
 
@@ -9,14 +9,13 @@ render() {
   return (
 
     <Carousel fade>
-    <Carousel.Item>
+    <Carousel.Item interval={4000}>
       <img
         height = "400px"
         className="d-block w-100"
         src="https://www.redmillspet.co.uk/wp-content/uploads/2019/12/leader-dog-food-1024x400.jpeg"
         alt="First slide"
       />
-      
       <Carousel.Caption>
         <h3>Lasa-ne pe noi sa te ajutam in gasirea animalutului perfect pentru tine</h3>
         <p></p>
@@ -30,21 +29,8 @@ render() {
         alt="Second slide"
       />
   
-      <Carousel.Caption>
+      <Carousel.Caption interval={4000}>
         <h3>Numarul total de animale salvate: 12401241</h3>
-        <p></p>
-      </Carousel.Caption>
-    </Carousel.Item>
-    <Carousel.Item>
-      <img
-        height = "400px"
-        className="d-block w-100"
-        src="https://www.dingonatura.com/images/branding/secondSlider12.jpg"
-        alt="Third slide"
-      />
-  
-      <Carousel.Caption>
-        <h3></h3>
         <p></p>
       </Carousel.Caption>
     </Carousel.Item>

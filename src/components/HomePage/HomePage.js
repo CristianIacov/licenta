@@ -3,7 +3,15 @@ import NavbarPage from '../NavigationBar/NavigationBar';
 import SearchBar from '../SearchBar/SearchBar';
 import CarouselPage from '../Carousel/Carousel'
 import PetCard from '../PetCard/PetCard'
+import FooterPage from '../Footer/Footer'
 import './HomePage.css';
+import azorel from '../../img/azorel.jpg'
+import caine3 from '../../img/caine3.jpg'
+import lucky from '../../img/lucky.jpg'
+import pisica1 from '../../img/pisica1.jpg'
+import saintbernard from '../../img/saintbernard.jpg'
+import blacky from '../../img/blacky.jpg'
+
 import {Container,Row,Col,Button} from 'react-bootstrap';
 import Heart from "react-animated-heart";
  class HomePage extends React.Component{
@@ -17,7 +25,7 @@ import Heart from "react-animated-heart";
      
        <div> 
          <Container  className = "buttonscontainer">
-           <Row>
+           <Row >
              <Col align = "right" >
              <Button className ="custombuttons" variant="Light">Cautare</Button>{' '}
              <Button className ="custombuttons" variant="Light">Contul Meu</Button>{' '}
@@ -25,39 +33,42 @@ import Heart from "react-animated-heart";
              </Col>
            </Row>
          </Container>
-         <Container fluid className= "mycontainer">
-           <Row  className = "row">
+         <Container fluid={true} className= "p-0 background-image">
+           <Row noGutters className = "row">
              <Col className="homepagenav" >
               <NavbarPage />
               </Col>
              </Row>
-          <Row  className = "row">
+          <Row  noGutters className = "row">
             <Col >
               <CarouselPage />
              </Col>
           </Row>
-          <Row>
-            <Col>
-            <SearchBar />
-            </Col>
-          </Row>
+
      
         </Container>
         <br/>
-        <br/>
-        <br/>
+
       <h1 align="center"> Animale disponibile spre adoptie</h1>
-        <Row  md="5" className ="cards">
-            <Col>
-            <PetCard name="Lucky" src="https://m1run1k.files.wordpress.com/2012/07/bubu.jpg"/>
+        <Row   className ="cards">
+            <Col sm="2">
             </Col>
             <Col>
-            <PetCard name="Azorel" src="https://stor200989531.anuntul.ro/media/foto/imgs/2018/6/27/200989531.jpg"/>
+            <PetCard name="Lucky" src={lucky}/>
             </Col>
             <Col>
-            <PetCard name="Miti" src="https://lh3.googleusercontent.com/proxy/NmIGg384qZCQxN73Lqjb7fQrlmRgYiT3EcE1i0uhWobz9TuRkCbMdAKfqHMVCjRuLNeEFWMAPnIBi_tO4Ekjyipi2i9vMGDM6TJ4s_9SXppwFHaTYiP9Xzi5nQhuawG3HfwLk5WH-QP241X28rUpECVFAFGOgdFO3K8dN4O9"/>
+            <PetCard name="Azorel" src={azorel}/>
             </Col>
+            <Col>
+            <PetCard name="Miti" src= {pisica1} />
+            </Col>
+
           </Row>
+        <Row>
+          <Col>
+          <FooterPage />
+          </Col>
+        </Row>
        </div>
      
     );

@@ -1,8 +1,5 @@
 
 
-.mycontainer{
-    padding-top: 10px;
-}
 .homepagenav{
     padding-top: 30px;
 }
@@ -22,7 +19,9 @@
     padding-top: 100px;
 }
 
-.h1{
+  h1{
    
-    padding-top: 20px;
+    padding-top: 100px;
+    color:seagreen;
+    font-family:'Times New Roman', Times, serif;
 }

@@ -2,9 +2,21 @@
 
 .carousel .carousel-item{
 
+    display:block;
     width: 100%;
 }
 
 .carousel-item img{
     width: 100%;
+}
+
+h3{
+        
+        font-family:'Times New Roman', Times, serif;
+}
+.carousel-caption{
+    vertical-align: middle;
+    top: 50%;
+transform: translateY(-50%);
+bottom: initial;
 }
