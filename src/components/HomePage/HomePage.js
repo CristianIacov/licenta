@@ -14,6 +14,7 @@ import blacky from '../../img/blacky.jpg'
 
 import {Container,Row,Col,Button} from 'react-bootstrap';
 import Heart from "react-animated-heart";
+import {Link } from 'react-router-dom';
  class HomePage extends React.Component{
 
   constructor(){
@@ -22,13 +23,19 @@ import Heart from "react-animated-heart";
   render()
   {
     return(
-     
+
        <div classname="homepage"> 
          <Container  className = "buttonscontainer">
            <Row >
              <Col align = "right" >
+             <Link to="/SearchBar">
              <Button className ="custombuttons" variant="Light">Cautare</Button>{' '}
+             </Link>
+             <Link to="/SearchBar">
              <Button className ="custombuttons" variant="Light">Contul Meu</Button>{' '}
+             </Link>
+             
+             
              <Button className ="custombuttons" variant="Light">Conectare</Button>{' '}
              </Col>
            </Row>
@@ -38,7 +45,12 @@ import Heart from "react-animated-heart";
              <Col className="homepagenav" >
               <NavbarPage />
               </Col>
+
+              
              </Row>
+
+
+              
           <Row  noGutters className = "row">
             <Col >
               <CarouselPage />
@@ -48,7 +60,6 @@ import Heart from "react-animated-heart";
      
         </Container>
         <br/>
-
       <h1 align="center"> Animale disponibile spre adoptie</h1>
         <Row   className ="cards">
             <Col sm="2">
@@ -91,7 +102,7 @@ import Heart from "react-animated-heart";
           </Col>
         </Row>
        </div>
-     
+
     );
   };
  }

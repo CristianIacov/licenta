@@ -12,7 +12,7 @@ render() {
   return (
       <div>
 <a>
-<Card className="text-center" style={{ width: '20rem' }}>
+<Card className="text-center" style={{ width: '18rem' }}>
   <Card.Img  variant="top" src={this.props.src} />
   <Card.Body>
     <Card.Title>{this.props.name}</Card.Title>
