@@ -2,15 +2,13 @@ import React, { Component } from "react";
 import {Nav,Form,FormControl,Button} from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import {Container,Row,Col,Dropdown,Jumbotron} from 'react-bootstrap';
-import './SearchBar.css';
+import './Signin.css';
 
-class SearchBar extends Component {
+class Signin extends Component {
   constructor(props){
     super(props);
     this.state = {
       email: '',
-      firstName: '',
-      lastName: '',
       password: ''
     }
   }
@@ -27,36 +25,33 @@ onLastNameChange = (event) => {
 onPasswordChange = (event) => {
   this.setState({password:event.target.value});
 } 
-onSubmitRegister = () => {
-  fetch('http://localhost:3001/register',{
+onSubmitSignin = () => {
+  fetch('http://localhost:3001/signin',{
     method: 'post',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      firstname:this.state.firstName,
-      lastname:this.state.lastName,
       email:this.state.email,
       password:this.state.password
     })
   })
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(data => {
+    console.log(data);
+      if(data){
+      window.alert('Esti conectat')
+      }
+      else{
+          this.props.onPathChange('register');
+      }
+
+  })
   .catch(err => console.log('could not register user'))
 }
 render() {
   return (
     <div className = "formdiv">
   <form>
-                <h3>Register</h3>
-
-                <div className="form-group">
-                    <label>Nume</label>
-                    <input onChange = { this.onFirstNameChange} type="text" className="form-control" placeholder="Nume" />
-                </div>
-
-                <div className="form-group">
-                    <label>Prenume</label>
-                    <input onChange = { this.onLastNameChange} type="text" className="form-control" placeholder="Prenume" />
-                </div>
+                <h3>Conectare cont</h3>
 
                 <div className="form-group">
                     <label>Email</label>
@@ -69,11 +64,9 @@ render() {
                 </div>
 
                 <button 
-                onClick = {this.onSubmitRegister}
-                type="submit" className="btn btn-success btn-lg btn-block">Inregistrare</button>
-                <p className="forgot-password text-right">
-                    Ai un cont deja? <a href="#">conecteaza-te?</a>
-                </p>
+                onClick = {this.onSubmitSignin}
+                type="submit" className="btn btn-success btn-lg btn-block">Conecteaza-te</button>
+               
             </form>
     </div>
     
@@ -81,4 +74,4 @@ render() {
   }
 }
 
-export default SearchBar;
+export default Signin;

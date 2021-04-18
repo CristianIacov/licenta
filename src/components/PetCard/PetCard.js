@@ -9,16 +9,16 @@ constructor(props){
 }
 
 render() {
+  const {Pet} = this.props;
+  const img_url = "http://localhost:3001/" + Pet.path;
   return (
       <div>
 <a>
 <Card className="text-center" style={{ width: '18rem' }}>
-  <Card.Img  variant="top" src={this.props.src} />
+  <Card.Img  variant="top" src = {img_url} />
   <Card.Body>
-    <Card.Title>{this.props.name}</Card.Title>
-    <Card.Text>Timis Timisoara
-     
-    </Card.Text>
+    <Card.Title>{Pet.animalname}</Card.Title>
+    <Card.Text> {Pet.location}   </Card.Text>
   </Card.Body>
 </Card>
 </a>
