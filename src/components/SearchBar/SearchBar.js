@@ -3,6 +3,9 @@ import {Nav,Form,FormControl,Button} from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import {Container,Row,Col,Dropdown,Jumbotron} from 'react-bootstrap';
 import './SearchBar.css';
+import NavbarPage from '../NavigationBar/NavigationBar';
+import CarouselPage from '../Carousel/Carousel'
+import FooterPage from '../Footer/Footer'
 
 class SearchBar extends Component {
   constructor(props){
@@ -44,9 +47,21 @@ onSubmitRegister = () => {
 }
 render() {
   return (
-    <div className = "formdiv">
+    
+      <Container fluid={true} className= "p-0 background-image">
+                <Row noGutters className = "row">
+                  <Col className="homepagenav" >
+                      <NavbarPage />
+                  </Col>
+               </Row>
+               <Row  noGutters className = "row">
+                  <Col >
+                    <CarouselPage />
+                  </Col>
+              </Row>
+              <div className = "formdiv">
   <form>
-                <h3>Register</h3>
+                <h3>Inregistrare cont</h3>
 
                 <div className="form-group">
                     <label>Nume</label>
@@ -76,6 +91,12 @@ render() {
                 </p>
             </form>
     </div>
+    <Row>
+          <Col>
+          <FooterPage />
+          </Col>
+        </Row>
+    </Container>
     
   );
   }

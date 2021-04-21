@@ -2,8 +2,24 @@ import React, { Component } from "react";
 import {Nav,Form,FormControl,Button} from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import {Container,Row,Col,Dropdown,Jumbotron} from 'react-bootstrap';
+import NavbarPage from '../NavigationBar/NavigationBar';
+import CarouselPage from '../Carousel/Carousel'
+import FooterPage from '../Footer/Footer'
+import { connect } from 'react-redux';
 import './Signin.css';
+import { setSignedIn } from '../../actions.js';
 
+const mapStateToProps = (state) => {
+  return {
+    isSignedIn: state.isSignedIn
+  }
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetSignIn: () => dispatch(setSignedIn(true))
+    
+  }
+};
 class Signin extends Component {
   constructor(props){
     super(props);
@@ -36,20 +52,29 @@ onSubmitSignin = () => {
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data);
-      if(data){
-      window.alert('Esti conectat')
-      }
-      else{
-          this.props.onPathChange('register');
-      }
 
-  })
+      this.props.onSetSignIn();
+      this.props.setUser(data);
+      window.alert('logged in');
+      }
+  )
   .catch(err => console.log('could not register user'))
 }
 render() {
   return (
-    <div className = "formdiv">
+
+                <Container fluid={true} className= "p-0 background-image">
+                <Row noGutters className = "row">
+                  <Col className="homepagenav" >
+                      <NavbarPage />
+                  </Col>
+               </Row>
+               <Row  noGutters className = "row">
+                  <Col >
+                    <CarouselPage />
+                  </Col>
+              </Row>
+              <div className = "formdiv" >
   <form>
                 <h3>Conectare cont</h3>
 
@@ -63,15 +88,22 @@ render() {
                     <input onChange = { this.onPasswordChange} type="password" className="form-control" placeholder="Parola" />
                 </div>
 
-                <button 
+                <a
                 onClick = {this.onSubmitSignin}
-                type="submit" className="btn btn-success btn-lg btn-block">Conecteaza-te</button>
+                type="submit" className="btn btn-success btn-lg btn-block">Conecteaza-te</a>
                
             </form>
-    </div>
+            </div>
+            <Row>
+          <Col className ="mt-3">
+          <FooterPage />
+          </Col>
+        </Row>
+            </Container>
+ 
     
   );
   }
 }
 
-export default Signin;
+export default connect(mapStateToProps,mapDispatchToProps)(Signin);

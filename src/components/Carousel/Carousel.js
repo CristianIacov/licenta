@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {Carousel} from 'react-bootstrap';
 import './Carousel.css';
-import {Container,Row,Col,Button} from 'react-bootstrap';
 class CarouselPage extends Component {
 
 

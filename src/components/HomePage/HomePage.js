@@ -9,7 +9,7 @@ import './HomePage.css';
 
 
 import {Container,Row,Col,Button} from 'react-bootstrap';
-import Heart from "react-animated-heart";
+
 import {Link, NavLink, RouteComponentProps } from 'react-router-dom';
 
  class HomePage extends React.Component{
@@ -41,67 +41,59 @@ import {Link, NavLink, RouteComponentProps } from 'react-router-dom';
       {
         path:'def'
       }],
-      currentPath:'home'
+      currentPath:'home',
+      isSignedIn: 'false',
+      user:[]
     }
   }
+
+
+   setSignedIn = (data) => {
+     console.log('SUNT INSET SIGNEDIN');
+     console.log(data);
+    this.setState({isSignedIn: data});
+  };
+  getSignedIn = () => {
+    return this.state.isSignedIn;
+  }
+
+   setUser = (data) => {
+     console.log(data);
+    this.setState({user:data});
+  };
+
   componentDidMount(){
     fetch('http://localhost:3001/lastannounces')
     .then(response => response.json())
     .then(announces => {
       this.setState({lastAnnounces: announces})
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log('Could not get the latest pets'))
   }
   onPathChange = (path) =>{
     this.setState({currentPath:path})
   }
   render()
-  {
+  { 
     const {lastAnnounces,currentPath} = this.state;
     return(
      
        <div classname="homepage"> 
-         <Container  className = "buttonscontainer">
-           <Row >
-             <Col align = "right" >
-             <Button className ="custombuttons"  onClick = {() => this.props.history.push("/SearchBar")} variant="Light">Cautare</Button>{' '}
-             <Button className ="custombuttons" onClick = {() => this.onPathChange('register')} variant="Light">Contul Meu</Button>{' '}       
-             <Button className ="custombuttons"  onClick = {() => this.onPathChange('signin')} variant="Light">Conectare</Button>{' '}
-             </Col>
-           </Row>
-         </Container>
+
          <Container fluid={true} className= "p-0 background-image">
            <Row noGutters className = "row">
              <Col className="homepagenav" >
-              <NavbarPage />
+              <NavbarPage onPathChange = {this.onPathChange} getSignedIn={this.getSignedIn} onPathChange = {this.onPathChange}/>
               </Col>
-
               
              </Row>
-
-
-
-                 
           <Row  noGutters className = "row">
             <Col >
               <CarouselPage />
              </Col>
           </Row>
         </Container>
-        {
-                currentPath === 'register'?
-                <div>
-                  <SearchBar />
-                  </div>
-                  :(
-                    currentPath === 'signin'?
-                    <div>
-                      <Signin onPathChange= {this.onPathChange} />
-                    </div>
-                    :                  
-                  <h3></h3>
-                  )
-  }
+
 
         <br/>
       <h1 align="center"> Animale disponibile spre adoptie</h1>
