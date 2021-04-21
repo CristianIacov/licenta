@@ -7,16 +7,18 @@ import CarouselPage from '../Carousel/Carousel'
 import FooterPage from '../Footer/Footer'
 import { connect } from 'react-redux';
 import './Signin.css';
-import { setSignedIn } from '../../actions.js';
+import { setSignedIn, setLoggedInUser } from '../../actions.js';
 
 const mapStateToProps = (state) => {
   return {
-    isSignedIn: state.isSignedIn
+    isSignedIn: state.setSignedIn.isSignedIn,
+    user: state.setLoggedInUser.user
   }
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSetSignIn: () => dispatch(setSignedIn(true))
+    onSetSignIn: () => dispatch(setSignedIn(true)),
+    setLoggedInUser: (data) => dispatch(setLoggedInUser(data))
     
   }
 };
@@ -54,7 +56,7 @@ onSubmitSignin = () => {
   .then(data => {
 
       this.props.onSetSignIn();
-      this.props.setUser(data);
+      this.props.setLoggedInUser(data);
       window.alert('logged in');
       }
   )

@@ -1,10 +1,15 @@
-import { SIGNED_IN } from './constants.js';
+import { SIGNED_IN,
+        LOGGED_IN_USER } from './constants.js';
 
 
 const initialSignedIn = {
     isSignedIn: false
-}
+};
 
+
+const initialLoggedUser = {
+    user: []
+};
 
 export const setSignedIn = (state = initialSignedIn, action = {}) => {
 
@@ -15,4 +20,15 @@ export const setSignedIn = (state = initialSignedIn, action = {}) => {
         default:
             return state;
     }
-}
+};
+
+export const setLoggedInUser = (state = initialLoggedUser, action = {}) => {
+
+    switch(action.type){
+        case LOGGED_IN_USER:
+            return Object.assign({}, state , {user: action.payload })
+
+        default:
+            return state;
+    }
+};

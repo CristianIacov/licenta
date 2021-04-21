@@ -4,11 +4,12 @@ import NavbarPage from '../NavigationBar/NavigationBar';
 import {Container,Row,Col,Button, Form} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import { connect } from 'react-redux';
-import { setSignedIn } from '../../actions.js';
+import { setSignedIn, LoggedInUser } from '../../actions.js';
 
 const mapStateToProps = (state) => {
   return {
-    isSignedIn: state.isSignedIn
+    isSignedIn: state.setSignedIn.isSignedIn,
+    user: state.setLoggedInUser.user
   }
 };
 const mapDispatchToProps = (dispatch) => {
@@ -51,7 +52,9 @@ onTitleChange = (event) => {
 render()
 {
   const { isSignedIn } = this.props;
+  const { user } = this.props;
   console.log(isSignedIn);
+  console.log(user);
 return (
     <div>
             <Row noGutters className = "row">

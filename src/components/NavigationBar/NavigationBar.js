@@ -9,7 +9,8 @@ import { setSignedIn } from '../../actions.js';
 
 const mapStateToProps = (state) => {
   return {
-    isSignedIn: state.isSignedIn
+    isSignedIn: state.setSignedIn.isSignedIn,
+    user: state.setLoggedInUser.user
   }
 };
 const mapDispatchToProps = (dispatch) => {
