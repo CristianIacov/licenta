@@ -1,0 +1,40 @@
+
+
+
+.footerpage{
+    padding-top:200px;
+}
+
+
+
+.box .row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    
+  }
+  
+  .aligntext{
+    margin-right: auto;
+    margin-left: 15%;
+  }
+
+  .alignthetext{
+    text-align:justify;
+  }
+
+  .align{
+    text-align: center;
+    font-size: 5rem;
+  }
+
+  .textalign{
+    text-align: center;
+  }
+
+  .adverttext{
+    font-size:3em;
+  }
+
+
+ 

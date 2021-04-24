@@ -3,6 +3,7 @@ import {Nav,Form,FormControl,Button} from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import {Container,Row,Col,Card} from 'react-bootstrap';
 import './PetCard.css';
+import { withRouter } from 'react-router-dom';
 class PetCard extends Component {
 constructor(props){
     super(props);
@@ -13,7 +14,12 @@ render() {
   const img_url = "http://localhost:3001/" + Pet.path;
   return (
       <div>
-<a>
+<a
+onClick = {() => this.props.history.push({
+  pathname: "/AdvertPage",
+  state: {petInfo: Pet}
+  })}
+>
 <Card className="text-center" style={{ width: '18rem' }}>
   <Card.Img  variant="top" src = {img_url} />
   <Card.Body>
@@ -28,4 +34,4 @@ render() {
   }
 }
 
-export default PetCard;
+export default withRouter(PetCard);

@@ -1,0 +1,27 @@
+
+
+
+img {
+
+    max-height: 500px;
+
+}
+
+
+
+.carouselarrange {
+
+    margin-right: auto;
+    margin-left: 15%;
+    max-width: 800px;
+    
+}
+
+.carouselarrange2 {
+    text-align: center;
+    padding-top:50px;
+    padding-bottom:50px;
+}
+
+
+.petcarousel{border: 2px solid black}

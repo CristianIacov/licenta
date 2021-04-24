@@ -5,6 +5,8 @@ import PetCard from './components/PetCard/PetCard'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Advert from './components/Advert/Advert';
+import AdvertPage from './components/AdvertPage/AdvertPage';
+import MyAdverts from './components/MyAdverts/MyAdverts';
 import Signin from './components/Signin/Signin';
 
  class App extends React.Component{
@@ -15,6 +17,8 @@ import Signin from './components/Signin/Signin';
     return(
       <Router>
         <Switch>
+          <Route exact path='/MyAdverts' component={MyAdverts} /> 
+          <Route path='/AdvertPage' component={AdvertPage} /> 
           <Route exact path='/Signin' component={Signin} /> 
           <Route exact path='/Advert' component={Advert} />
           <Route exact path="/" component={HomePage} />

@@ -8,6 +8,7 @@ import FooterPage from '../Footer/Footer'
 import { connect } from 'react-redux';
 import './Signin.css';
 import { setSignedIn, setLoggedInUser } from '../../actions.js';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
   return {
@@ -54,11 +55,17 @@ onSubmitSignin = () => {
   })
   .then(response => response.json())
   .then(data => {
-
+      console.log(data);
+      if(data.email == this.state.email){
       this.props.onSetSignIn();
       this.props.setLoggedInUser(data);
       window.alert('logged in');
+      this.props.history.push('/');
+      }  
+      else{
+        window.alert('Email sau parola gresita');
       }
+    }
   )
   .catch(err => console.log('could not register user'))
 }
@@ -91,8 +98,11 @@ render() {
                 </div>
 
                 <a
-                onClick = {this.onSubmitSignin}
-                type="submit" className="btn btn-success btn-lg btn-block">Conecteaza-te</a>
+                onClick = {
+                  
+                  this.onSubmitSignin
+                  }
+                type="submit" className="btn btn-success btn-lg btn-block mt-3">Conecteaza-te</a>
                
             </form>
             </div>
@@ -108,4 +118,4 @@ render() {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Signin);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Signin));

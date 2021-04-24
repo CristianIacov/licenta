@@ -35,7 +35,11 @@ render() {
     <Container  className = "buttonscontainer">
     <Row >
       <Col align = "right" >
-      <Button className ="custombuttons"  onClick = {() => this.props.history.push("/SearchBar")} variant="Light">Cautare</Button>{' '}
+        { isSignedIn === true?
+      <Button className ="custombuttons"  onClick = {() => this.props.history.push("/MyAdverts")} variant="Light">Anunturile mele</Button>
+      :
+      <div></div>
+        }
       <Button className ="custombuttons" onClick = {() => this.props.history.push('Register')} variant="Light">Contul Meu</Button>{' '}       
       <Button className ="custombuttons"  onClick = {() => this.props.history.push('Signin')} variant="Light">Conectare</Button>{' '}
       </Col>
@@ -45,11 +49,12 @@ render() {
   <Navbar className="nvbar" bg="success" variant="dark">
     <Navbar.Brand href="#home"></Navbar.Brand>
     <Nav >
-      <Nav.Link className="navbarfirst" href="#home">DESPRE ADOPTIE</Nav.Link>
+      <Nav.Link 
+      onClick = {() => this.props.history.push("/")} 
+      className="navbarfirst" href="#home">ACASA</Nav.Link>
       <Nav.Link className="navbar-nav" href="#shelters">ADAPOSTURI</Nav.Link>
       <Nav.Link className="navbar-nav" href="#caini">INGRIJIRE CAINI</Nav.Link>
       <Nav.Link className="navbar-nav" href="#pisici">INGRIJIRE PISICI</Nav.Link>
-      <Nav.Link className="navbar-nav" href="#shop">MAGAZIN</Nav.Link>
 
       <Nav.Link className="navbar-nav"onClick = {() => {
         if(isSignedIn === true)

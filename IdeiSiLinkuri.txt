@@ -9,3 +9,7 @@ https://www.rescueme.org/ Caini Adoptati/Pisici Adoptate   SI IN TOTAL ANIMALE S
  si poti sa-i dai mesaj
  poti sa ii dau un raiting
 si ccomentariu
+
+
+CAND VREI SA STERGI UN ANUNT/INCHIZI O SA INTREB DE CE INCHIZI SI DACA ANIMALUL A FOST ADOPTAT
+SE INCREMENTEAZA COUNTERUL CARE APARE PE MAIN PAGE

@@ -42,8 +42,18 @@ onSubmitRegister = () => {
     })
   })
   .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(err => console.log('could not register user'))
+  .then(data => {
+    if(data.email == this.state.email){
+    window.alert('Contul a fost inregistrat');
+    this.props.history.push('/');
+    console.log(data);}
+  else{
+    window.alert('Adaugati campurile necesare!');
+  }}
+    )
+  .catch(err => {
+    console.log('could not register user');
+  })
 }
 render() {
   return (
@@ -65,27 +75,35 @@ render() {
 
                 <div className="form-group">
                     <label>Nume</label>
-                    <input onChange = { this.onFirstNameChange} type="text" className="form-control" placeholder="Nume" />
+                    <input
+                    required
+                    onChange = { this.onFirstNameChange} type="text" className="form-control" placeholder="Nume" />
                 </div>
 
                 <div className="form-group">
                     <label>Prenume</label>
-                    <input onChange = { this.onLastNameChange} type="text" className="form-control" placeholder="Prenume" />
+                    <input
+                     required
+                    onChange = { this.onLastNameChange} type="text" className="form-control" placeholder="Prenume" />
                 </div>
 
                 <div className="form-group">
                     <label>Email</label>
-                    <input onChange = { this.onEmailChange} type="email" className="form-control" placeholder="Adauga email" />
+                    <input 
+                     required
+                    onChange = { this.onEmailChange} type="email" className="form-control" placeholder="Adauga email" />
                 </div>
 
                 <div className="form-group">
                     <label>Parola</label>
-                    <input onChange = { this.onPasswordChange} type="password" className="form-control" placeholder="Parola" />
+                    <input 
+                     required
+                    onChange = { this.onPasswordChange} type="password" className="form-control" placeholder="Parola" />
                 </div>
 
                 <button 
                 onClick = {this.onSubmitRegister}
-                type="submit" className="btn btn-success btn-lg btn-block">Inregistrare</button>
+                type="submit" className="btn btn-success btn-lg btn-block mt-3">Inregistrare</button>
                 <p className="forgot-password text-right">
                     Ai un cont deja? <a href="#">conecteaza-te?</a>
                 </p>

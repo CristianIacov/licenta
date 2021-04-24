@@ -12,7 +12,9 @@ import { setSignedIn, setLoggedInUser } from './reducers.js';
 const logger = createLogger();
 const rootReducer = combineReducers({ setSignedIn, setLoggedInUser})
 const store = createStore(rootReducer,applyMiddleware(thunkMiddleWare,logger))
+
 ReactDOM.render(
+  
   <React.StrictMode>
     <Provider store={store}>
     <App />
