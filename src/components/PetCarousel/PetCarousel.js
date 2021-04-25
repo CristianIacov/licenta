@@ -11,6 +11,7 @@ class PetCarousel extends Component {
 
 render() {
     const {img1_url,img2_url,img3_url} = this.props;
+      
   return (
     <Container fluid className= "p-0 background-image">
         <Row className= "">
@@ -30,7 +31,7 @@ render() {
     <Carousel.Item>
     <img
         height = "500"
-        src={img1_url}
+        src={img2_url}
         alt="Second slide"
       />
   
@@ -40,7 +41,7 @@ render() {
     <Carousel.Item>
     <img
         height = "500"
-        src={img1_url}
+        src={img3_url}
         alt="Third slide"
       />
   

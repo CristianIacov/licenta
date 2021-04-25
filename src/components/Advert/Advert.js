@@ -62,8 +62,12 @@ onTitleChange = (event) => {
   } 
   onSubmitAdd = () => {
     const myFile = document.getElementById('photo1').files[0];
+    const myFile2 = document.getElementById('photo2').files[0]? document.getElementById('photo2').files[0] :document.getElementById('photo1').files[0];
+    const myFile3 = document.getElementById('photo3').files[0]? document.getElementById('photo3').files[0] :document.getElementById('photo1').files[0];
     const data = new FormData();
     data.append("animalImage", myFile);
+    data.append("animalImage2", myFile2);
+    data.append("animalImage3", myFile3);
     data.append("email", this.props.user.email);
     data.append("firstname", this.props.user.firstname);
     data.append("lastname", this.props.user.lastname);

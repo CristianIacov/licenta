@@ -20,7 +20,7 @@ onClick = {() => this.props.history.push({
   state: {petInfo: Pet}
   })}
 >
-<Card className="text-center" style={{ width: '18rem' }}>
+<Card className="text-center mx-auto">
   <Card.Img  variant="top" src = {img_url} />
   <Card.Body>
     <Card.Title>{Pet.animalname}</Card.Title>

@@ -7,7 +7,7 @@ class CarouselPage extends Component {
 render() {
   return (
 
-    <Carousel fade>
+    <Carousel fade className = "frontpagecarousel">
     <Carousel.Item interval={4000}>
       <img
         height = "400px"
@@ -16,7 +16,7 @@ render() {
         alt="First slide"
       />
       <Carousel.Caption>
-        <h3>Lasa-ne pe noi sa te ajutam in gasirea animalutului perfect pentru tine</h3>
+        <h3 className ="fs-1">Lasa-ne pe noi sa te ajutam in gasirea animalutului perfect pentru tine</h3>
         <p></p>
       </Carousel.Caption>
     </Carousel.Item>
@@ -29,7 +29,7 @@ render() {
       />
   
       <Carousel.Caption interval={4000}>
-        <h3>Numarul total de animale salvate: 12401241</h3>
+        <h3 className ="fs-1" >Numarul total de animale salvate: 12401241</h3>
         <p></p>
       </Carousel.Caption>
     </Carousel.Item>

@@ -36,12 +36,12 @@ render() {
     <Row >
       <Col align = "right" >
         { isSignedIn === true?
-      <Button className ="custombuttons"  onClick = {() => this.props.history.push("/MyAdverts")} variant="Light">Anunturile mele</Button>
+      <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push("/MyAdverts")} variant="Light">Anunturile mele</Button>
       :
       <div></div>
         }
-      <Button className ="custombuttons" onClick = {() => this.props.history.push('Register')} variant="Light">Contul Meu</Button>{' '}       
-      <Button className ="custombuttons"  onClick = {() => this.props.history.push('Signin')} variant="Light">Conectare</Button>{' '}
+      <Button className ="custombuttons  btn-lg" onClick = {() => this.props.history.push('Register')} variant="Light">Contul Meu</Button>{' '}       
+      <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push('Signin')} variant="Light">Conectare</Button>{' '}
       </Col>
     </Row>
   </Container>

@@ -28,6 +28,20 @@ class AdvertPage extends Component {
  
 render() {
     const {petInfo} = this.props.location.state;
+    var photo1,photo2,photo3;
+    photo1 = petInfo.path;
+    photo2 = petInfo.path2;
+    photo3 = petInfo.path3;
+    console.log(photo2);
+    if(photo2 == null)
+      photo2 = photo1;
+      else
+      photo2 = petInfo.path2;
+  console.log(photo2);
+      if(photo3 == null)
+      photo3 = photo1;
+      else
+      photo3 = petInfo.path3;
 
   return (
         <div className = "align">
@@ -43,9 +57,9 @@ render() {
                   <Row  >
             <Col  >
               <PetCarousel
-              img1_url = {"http://localhost:3001/"+ petInfo.path}
-              img2_url = {"http://localhost:3001/"+ petInfo.path}
-              img3_url = {"http://localhost:3001/"+ petInfo.path}
+              img1_url = {"http://localhost:3001/"+ photo1}
+              img2_url = {"http://localhost:3001/"+ photo2}
+              img3_url = {"http://localhost:3001/"+ photo3}
               />
              </Col>
             <Col   className = "mt-auto mb-auto  bg-light ">
