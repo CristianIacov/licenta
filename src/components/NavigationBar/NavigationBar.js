@@ -6,7 +6,9 @@ import './NavigationBar.css';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setSignedIn } from '../../actions.js';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faUserCog } from '@fortawesome/free-solid-svg-icons'
 const mapStateToProps = (state) => {
   return {
     isSignedIn: state.setSignedIn.isSignedIn,
@@ -40,8 +42,14 @@ render() {
       :
       <div></div>
         }
-      <Button className ="custombuttons  btn-lg" onClick = {() => this.props.history.push('Register')} variant="Light">Contul Meu</Button>{' '}       
-      <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push('Signin')} variant="Light">Conectare</Button>{' '}
+      <Button className ="custombuttons  btn-lg" onClick = {() => this.props.history.push('Register')} variant="Light">
+      <FontAwesomeIcon className = "fontawesome" icon={faUserCog}  size="1x" /> 
+      Contul Meu
+      </Button>{' '}       
+      <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push('Signin')} variant="Light">
+      <FontAwesomeIcon  className = "fontawesome" icon={faUser}  size="1x" /> 
+        Conectare
+        </Button>{' '}
       </Col>
     </Row>
   </Container>

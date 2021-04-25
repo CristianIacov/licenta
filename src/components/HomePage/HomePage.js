@@ -5,8 +5,10 @@ import Signin from '../Signin/Signin';
 import CarouselPage from '../Carousel/Carousel'
 import PetCard from '../PetCard/PetCard'
 import FooterPage from '../Footer/Footer'
+import AdvertsSearchBar from '../AdvertsSearchBar/AdvertsSearchBar'
 import './HomePage.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDog } from '@fortawesome/free-solid-svg-icons'
 
 import {Container,Row,Col,Button} from 'react-bootstrap';
 
@@ -92,6 +94,13 @@ import {Link, NavLink, RouteComponentProps } from 'react-router-dom';
               <CarouselPage />
              </Col>
           </Row>
+          <Row>
+          <Col>
+             <AdvertsSearchBar />
+            </Col>
+            <FontAwesomeIcon icon="faDog" /> 
+                <FontAwesomeIcon icon="coffee" />
+            </Row>
         </Container>
 
 
