@@ -107,7 +107,7 @@ return (
            </Row>
 
 
-    <Container>
+    <Container className = " bg-light ">
         <label  className = "mt-3" >Publica un anunt</label>
         <Col sm="6" className = "mt-1 mb-3">
         <input 

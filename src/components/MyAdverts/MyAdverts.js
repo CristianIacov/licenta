@@ -61,19 +61,27 @@ render() {
         allAdverts.map((data) => {
             return(
 
-                <Row className = "p-5">
-                <Col sm ={{span:2, offset:0}}>
+                <Row>
+                <Col sm ={{span:4, offset:0}}  className = "p-3 ml-2">
                 <PetCard Pet = {data}/>
                 </Col>
-                <Col sm="10" className ="bg-light">
+                <Col sm="7" className ="bg-light mt-3">
                 <h3 className = "mb-3">{data.title}</h3>     
-                <p className ="mx-auto">Postat la data de {data.timestamp.substring(0,10)}</p>       
+                <p className ="mx-auto">Postat la data de {data.timestamp.substring(0,10)}</p>
+                <p className ="mx-auto">{data.description}</p>          
   
                 </Col>
                 </Row>
 
             );
-    })}
+    }
+    )
+    }
+        <Row>
+    <Col>
+    <FooterPage />
+    </Col>
+  </Row>
     </Container>
     
     

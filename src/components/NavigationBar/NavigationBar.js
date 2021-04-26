@@ -7,8 +7,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setSignedIn } from '../../actions.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faUserCog } from '@fortawesome/free-solid-svg-icons'
+import { faUser,faCommentAlt,faSignInAlt,faUserCog } from '@fortawesome/free-solid-svg-icons'
+
 const mapStateToProps = (state) => {
   return {
     isSignedIn: state.setSignedIn.isSignedIn,
@@ -38,16 +38,19 @@ render() {
     <Row >
       <Col align = "right" >
         { isSignedIn === true?
-      <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push("/MyAdverts")} variant="Light">Anunturile mele</Button>
+      <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push("/MyAdverts")} variant="Light">
+            <FontAwesomeIcon className = "fontawesome" color = "green" icon={faCommentAlt}  size="1x" /> 
+        Anunțurile mele
+        </Button>
       :
       <div></div>
         }
       <Button className ="custombuttons  btn-lg" onClick = {() => this.props.history.push('Register')} variant="Light">
-      <FontAwesomeIcon className = "fontawesome" icon={faUserCog}  size="1x" /> 
+      <FontAwesomeIcon className = "fontawesome" color = "green" icon={faUserCog}  size="1x" /> 
       Contul Meu
       </Button>{' '}       
       <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push('Signin')} variant="Light">
-      <FontAwesomeIcon  className = "fontawesome" icon={faUser}  size="1x" /> 
+      <FontAwesomeIcon  className = "fontawesome" color = "green" icon={faSignInAlt}  size="1x" /> 
         Conectare
         </Button>{' '}
       </Col>
@@ -59,15 +62,15 @@ render() {
     <Nav >
       <Nav.Link 
       onClick = {() => this.props.history.push("/")} 
-      className="navbarfirst" href="#home">ACASA</Nav.Link>
-      <Nav.Link className="navbar-nav" href="#shelters">ADAPOSTURI</Nav.Link>
-      <Nav.Link className="navbar-nav" href="#caini">INGRIJIRE CAINI</Nav.Link>
-      <Nav.Link className="navbar-nav" href="#pisici">INGRIJIRE PISICI</Nav.Link>
+      className="navbarfirst" href="#home">Acasă</Nav.Link>
+      <Nav.Link className="navbar-nav" href="#shelters">Adăposturi</Nav.Link>
+      <Nav.Link className="navbar-nav" href="#caini">Îngrijire Câini</Nav.Link>
+      <Nav.Link className="navbar-nav" href="#pisici">Îngrijire Pisici</Nav.Link>
 
       <Nav.Link className="navbar-nav"onClick = {() => {
         if(isSignedIn === true)
         this.props.history.push("/Advert")
-        }} >ADAUGA ANUNT</Nav.Link>
+        }} >Adaugă Anunț</Nav.Link>
 
     </Nav>
   </Navbar>

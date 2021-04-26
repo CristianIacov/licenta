@@ -67,7 +67,10 @@ onSubmitSignin = () => {
       }
     }
   )
-  .catch(err => console.log('could not register user'))
+  .catch(err => {
+    window.alert('Email sau parola gresita');
+    console.log('could not register user');
+  })
 }
 render() {
   return (
