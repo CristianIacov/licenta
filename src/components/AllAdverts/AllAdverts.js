@@ -9,18 +9,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setSignedIn, setLoggedInUser } from '../../actions.js';
 import PetCard from '../PetCard/PetCard'
-const mapStateToProps = (state) => {
-    return {
-      isSignedIn: state.setSignedIn.isSignedIn,
-      user: state.setLoggedInUser.user
-    }
-  };
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      
-    }
-  };
-class MyAdverts extends Component {
+
+class AllAdverts extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -29,26 +19,10 @@ class MyAdverts extends Component {
 
   }
 
-componentDidMount() {
-    fetch('http://localhost:3001/allannouncesforauser',{
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          email:this.props.user.email,
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        
-            console.log(data);
-        this.setState({allAdverts: data});
-        })
-        .catch(err => console.log(err))
-      }
 
 
 render() {
-    const { allAdverts } = this.state;
+    const { allAdverts } = this.props.location.state;
   return (
 
     <Container fluid={true} className= "p-0">
@@ -77,16 +51,18 @@ render() {
     }
     )
     }
-        <Row>
-    <Col>
+
+    <Row className ="mt-auto">
+      <Col className ="mt-auto">
     <FooterPage />
     </Col>
-  </Row>
-    </Container>
-    
+    </Row>
+    </Container>  
+
+
     
   );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MyAdverts));
+export default withRouter(AllAdverts);

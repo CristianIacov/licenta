@@ -1,4 +1,5 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
 #footer {
     background: #007b5e !important;
 }
@@ -54,14 +55,11 @@
     font-weight: 700;
 }
 #footer{
-  
-        padding: 60px 0;
-        
-        text-align: center;
-        color: #42ba96;
 
+        padding: 60px 0;
+        text-align: center;       
+        color: #42ba96;       
         text-transform: uppercase;
-    
 }
 
 @media (max-width:767px){

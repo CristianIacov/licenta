@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setSignedIn } from '../../actions.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser,faCommentAlt,faSignInAlt,faUserCog } from '@fortawesome/free-solid-svg-icons'
+import { faUser,faCommentAlt,faSignInAlt,faUserCog, faComments } from '@fortawesome/free-solid-svg-icons'
 
 const mapStateToProps = (state) => {
   return {
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    
+    onSetSignIn: () => dispatch(setSignedIn(false)),
   }
 };
 class NavbarPage extends React.Component {
@@ -45,14 +45,37 @@ render() {
       :
       <div></div>
         }
-      <Button className ="custombuttons  btn-lg" onClick = {() => this.props.history.push('Register')} variant="Light">
+    
+      { isSignedIn === false?  
+      <div>
+              <Button className ="custombuttons  btn-lg" onClick = {() => this.props.history.push('/Register')} variant="Light">
       <FontAwesomeIcon className = "fontawesome" color = "green" icon={faUserCog}  size="1x" /> 
       Contul Meu
-      </Button>{' '}       
-      <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push('Signin')} variant="Light">
+      </Button>{' '} 
+      <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push('/Signin')} variant="Light">
       <FontAwesomeIcon  className = "fontawesome" color = "green" icon={faSignInAlt}  size="1x" /> 
         Conectare
-        </Button>{' '}
+        </Button>
+        </div>
+        :
+        <>
+              <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push("/MyMessages")} variant="Light">
+            <FontAwesomeIcon className = "fontawesome" color = "green" icon={faCommentAlt}  size="1x" /> 
+        Mesajele Mele
+        </Button>
+        <Button className ="custombuttons  btn-lg" onClick = {() => this.props.history.push('/Register')} variant="Light">
+          <FontAwesomeIcon className = "fontawesome" color = "green" icon={faUserCog}  size="1x" /> 
+          Contul Meu
+      </Button>{' '} 
+        <Button className ="custombuttons  btn-lg"  onClick = {() => {
+          this.props.onSetSignIn();
+          this.props.history.push('/');}} variant="Light">
+        <FontAwesomeIcon  className = "fontawesome" color = "green" icon={faSignInAlt}  size="1x" /> 
+          Deconectare
+          </Button>
+          </> 
+
+      }
       </Col>
     </Row>
   </Container>

@@ -8,7 +8,8 @@ import Advert from './components/Advert/Advert';
 import AdvertPage from './components/AdvertPage/AdvertPage';
 import MyAdverts from './components/MyAdverts/MyAdverts';
 import Signin from './components/Signin/Signin';
-
+import MyMessages from './components/MyMessages/MyMessages';
+import AllAdverts from './components/AllAdverts/AllAdverts';
  class App extends React.Component{
 
 
@@ -17,8 +18,10 @@ import Signin from './components/Signin/Signin';
     return(
       <Router>
         <Switch>
+          <Route exact path='/MyMessages' component={MyMessages} /> 
+          <Route exact path='/AllAdverts' component={AllAdverts} /> 
           <Route exact path='/MyAdverts' component={MyAdverts} /> 
-          <Route path='/AdvertPage' component={AdvertPage} /> 
+          <Route path='/AdvertPage/:id' component={AdvertPage} /> 
           <Route exact path='/Signin' component={Signin} /> 
           <Route exact path='/Advert' component={Advert} />
           <Route exact path="/" component={HomePage} />

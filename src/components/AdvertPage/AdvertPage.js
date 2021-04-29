@@ -23,9 +23,39 @@ const mapDispatchToProps = (dispatch) => {
 class AdvertPage extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      message: ''
+    }
   }
 
- 
+ onMessageChange = (event) => {
+   this.setState({message: event.target.value})
+ };
+
+ onSendMessage  = () => {
+   fetch('http://localhost:3001/messages',{
+     method: 'post',
+     headers: {'Content-Type': 'application/json'},
+     body: JSON.stringify({
+       sourceUser: this.props.user.email,
+       destinationUser: this.props.location.state.petInfo.email,
+       advertId: this.props.location.state.petInfo.id.toString(),
+       message: this.state.message
+     })
+   })
+   .then(response => response.json())
+   .then(data => {
+     console.log(data);
+     if(data == 'ok'){
+     window.alert('Mesajul a fost trimis');
+     }
+     else{
+       window.alert('Mesajul nu a putut fi trimis');
+     }
+   })
+   .catch(err => { console.log(err)})
+ }
+
 render() {
     const {petInfo} = this.props.location.state;
     var photo1,photo2,photo3;
@@ -62,16 +92,21 @@ render() {
               img3_url = {"http://localhost:3001/"+ photo3}
               />
              </Col>
-            <Col   className = "mb-auto  bg-light mt-5">
+            </Row>
+            
+
+              <Row>
+              <Col  sm="6" className = "mx-auto bg-light mt-5">
            <h2 className="fs-1 mb-5">{petInfo.title}</h2>
             <p className="fs-5 mb-2 "> Anunt postat la data de {petInfo.timestamp.substring(0,10)} </p>
             <h1 className="fs-2 mb-3">Descriere</h1>
             <p className="fs-5 "> {petInfo.description}</p>
             <p className="fs-2"> Judet/Localitate:  {petInfo.location} </p>
             </Col>
-            </Row>
+              </Row>
             <Row>
-              <Col md={{ span: 5, offset: 1 }} className="bg-light mt-2 mb-5">
+     
+              <Col sm = "6" className="bg-light mt-5 mx-auto">
               <p className = "fs-2">Anuntul este oferit de: {petInfo.lastname} {petInfo.firstname}</p>
             <p className="fs-3"> {petInfo.phonenumber}</p>
             <a
@@ -79,9 +114,14 @@ render() {
 
                               <p className="fs-4 mt-5"> Trimite un mesaj vanzatorului </p>
             <Form.Control 
+            id = "mesajform"
+            onChange = {this.onMessageChange}
             placeholder = "Scrie mesajul tau"
             as="textarea" rows={5} />
              <a 
+             onClick = {() => {
+               this.onSendMessage();
+               document.getElementById('mesajform').value = '';}}
          type="submit" className="btn btn-success btn-sm">Trimite</a>     
             </Col>
           </Row>

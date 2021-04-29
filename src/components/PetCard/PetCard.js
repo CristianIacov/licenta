@@ -16,7 +16,7 @@ render() {
       <div>
 <a
 onClick = {() => this.props.history.push({
-  pathname: "/AdvertPage",
+  pathname: `/AdvertPage/${Pet.id}`,
   state: {petInfo: Pet}
   })}
 >

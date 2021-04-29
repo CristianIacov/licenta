@@ -105,7 +105,7 @@ import {Link, NavLink, RouteComponentProps } from 'react-router-dom';
 
 
         <br/>
-      <h1 className = "animaledisponibile"> Animale disponibile spre adoptie</h1>
+      <h1 className = "animaledisponibile"> Cele mai recente anunturi </h1>
         <Row   className ="cards">
             <Col sm="2">
             </Col>

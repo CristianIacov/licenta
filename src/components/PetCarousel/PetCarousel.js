@@ -14,7 +14,7 @@ render() {
       
   return (
     <Container fluid className= "p-0 background-image">
-        <Row className= "">
+        <Row  className= "">
     <div className = "carouselarrange">
     <div className = "carouselarrange2">
     <Carousel className="petcarousel" fade>
