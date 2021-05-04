@@ -55,11 +55,13 @@ onSubmitSignin = () => {
   })
   .then(response => response.json())
   .then(data => {
+    
       console.log(data);
       if(data.email == this.state.email){
+      localStorage.setItem('user', JSON.stringify(data))
       this.props.onSetSignIn();
       this.props.setLoggedInUser(data);
-      window.alert('logged in');
+      window.alert('Esti conectat');
       this.props.history.push('/');
       }  
       else{

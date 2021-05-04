@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React, { Component,useEffect } from "react";
 import {Nav,Form,FormControl,Button} from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import {Container,Row,Col} from 'react-bootstrap';
 import './NavigationBar.css';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setSignedIn } from '../../actions.js';
+import { setSignedIn, setLoggedInUser } from '../../actions.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser,faCommentAlt,faSignInAlt,faUserCog, faComments } from '@fortawesome/free-solid-svg-icons'
+import { faUser,faCommentAlt,faSignInAlt,faUserCog, faComments,faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons'
 
 const mapStateToProps = (state) => {
   return {
@@ -17,9 +17,11 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSetSignIn: () => dispatch(setSignedIn(false)),
+    onSetSignIn: (data) => dispatch(setSignedIn(data)),
+    setLoggedInUser: (data) => dispatch(setLoggedInUser(data))
   }
 };
+
 class NavbarPage extends React.Component {
 
 constructor(props){
@@ -29,6 +31,17 @@ constructor(props){
   }
   
 }
+/* To keep user logged in */
+componentDidMount(){
+  const loggedInUser = localStorage.getItem("user");
+  if (loggedInUser) {
+    const foundUser = JSON.parse(loggedInUser);
+    this.props.onSetSignIn(true);
+    this.props.setLoggedInUser(foundUser)
+  }
+}
+
+
 render() {
   const { isSignedIn } = this.props;
 
@@ -60,7 +73,7 @@ render() {
         :
         <>
               <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push("/MyMessages")} variant="Light">
-            <FontAwesomeIcon className = "fontawesome" color = "green" icon={faCommentAlt}  size="1x" /> 
+            <FontAwesomeIcon className = "fontawesome" color = "green" icon={faEnvelopeSquare}  size="1x" /> 
         Mesajele Mele
         </Button>
         <Button className ="custombuttons  btn-lg" onClick = {() => this.props.history.push('/Register')} variant="Light">
@@ -68,7 +81,8 @@ render() {
           Contul Meu
       </Button>{' '} 
         <Button className ="custombuttons  btn-lg"  onClick = {() => {
-          this.props.onSetSignIn();
+          this.props.onSetSignIn(false);
+          localStorage.clear();
           this.props.history.push('/');}} variant="Light">
         <FontAwesomeIcon  className = "fontawesome" color = "green" icon={faSignInAlt}  size="1x" /> 
           Deconectare

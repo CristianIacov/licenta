@@ -1,7 +1,14 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
 #footer {
     background: #007b5e !important;
+}
+body {
+    display: grid;
+    /* Replace 80 with your footer height, or with auto for variable-height footers */
+    grid-template-rows: 1fr 500px;
+    /* These two are important */
+    min-height: 100vh;
+    position: relative;
 }
 #footer h5{
 	padding-left: 10px;
@@ -69,4 +76,14 @@
     padding-bottom: 0px;
     margin-bottom: 10px;
 }
+}
+
+#footer {
+    background: black;
+    bottom: 0;
+    color: white;
+    display: flex;
+    grid-row: 2;
+    position: absolute;
+    width: 100%;
 }

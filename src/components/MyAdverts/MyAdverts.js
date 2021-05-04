@@ -30,11 +30,21 @@ class MyAdverts extends Component {
   }
 
 componentDidMount() {
+  /* Whe refreshing, the adverts for a user will be refreshed aswell */
+  const loggedInUser = localStorage.getItem("user");
+  var foundUser;
+  if (loggedInUser) {
+     foundUser = JSON.parse(loggedInUser).email;
+  }
+  else{
+     foundUser = this.props.user.email;
+  }
+
     fetch('http://localhost:3001/allannouncesforauser',{
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-          email:this.props.user.email,
+          email: foundUser,
         })
       })
       .then(response => response.json())
@@ -76,6 +86,18 @@ render() {
             );
     }
     )
+    }
+    {
+    !allAdverts[0]?
+    <Row>
+      <Col sm="4" style ={{margin:"auto"}}>
+      <h3 className="fs-1">Momentan nu ai niciun anunt postat</h3>
+      </Col>
+    </Row>
+
+    :
+    <>
+    </>
     }
         <Row>
     <Col>

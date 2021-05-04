@@ -3,7 +3,9 @@ import {Carousel} from 'react-bootstrap';
 import './Carousel.css';
 class CarouselPage extends Component {
 
-
+constructor(props){
+  super(props);
+}
 render() {
   return (
 
@@ -29,7 +31,7 @@ render() {
       />
   
       <Carousel.Caption interval={4000}>
-        <h3 className ="fs-1" >Numarul total de animale salvate: 12401241</h3>
+        <h3 className ="fs-1" >Numarul total de animale salvate: {this.props.nbOfAnimalsSave}</h3>
         <p></p>
       </Carousel.Caption>
     </Carousel.Item>

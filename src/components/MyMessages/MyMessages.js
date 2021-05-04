@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import MessageChat from '../MessageChat/MessageChat'
+import MessageList from '../MessageList/MessageList'
 const mapStateToProps = (state) => {
     return {
       isSignedIn: state.setSignedIn.isSignedIn,
@@ -28,21 +29,29 @@ class MyMessages extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            actualConversation:[{
-                sourceUser: 'crs_cristi1998@yahoo.ro',
-                destinationUser: 'ionescu@gmail.com',
+            actualConversation:{
+                sourceUser: 'test',
+                destinationUser: 'test',
                 advertId: '22'
-            }],
+            },
             allAdverts: []
         }
     }
   componentDidMount(){
-      
+        /* Whe refreshing, the adverts for a user will be refreshed aswell */
+        const loggedInUser = localStorage.getItem("user");
+        var foundUser;
+        if (loggedInUser) {
+            foundUser = JSON.parse(loggedInUser).email;
+        }
+        else{
+            foundUser = this.props.user.email;
+        }
       fetch('http://localhost:3001/getallmessages', {
           method: 'post',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
-              email: this.props.user.email
+              email: foundUser
           })
       })
       .then(response => response.json())
@@ -63,11 +72,14 @@ class MyMessages extends React.Component{
 
   }
 
+  onChangeActualConversation = (data) => {
+      this.setState({actualConversation: data})
+  }
 
     render(){
         const {allAdverts} = this.state;
         var uniqueValues = [{}];
-        const {actualConversation} = this.state;
+
         return(
             <Container fluid={true} className= "p-0">
              <Row noGutters >
@@ -89,20 +101,8 @@ class MyMessages extends React.Component{
                                {uniqueValues.push({advertId:data.advertId, sourceUser:data.sourceUser, destinationUser: data.destinationUser})}                              
                                </div>
                                
-                               <Row className ="mb-3" >
-                                 <Col sm = "12">
-                                 <Button className ="custombuttons  btn-lg"  
-                                 onClick = {() => this.setState({actualConversation:data})} variant="Light">
-                                <FontAwesomeIcon  className = "fontawesome" icon={faUserCircle}  size="2x" />   
-
-                                {data.sourceUser}
-                                </Button>  
-                                </Col>
-                                <p1 className = "fs-3" style={{"margin-left":"50px"}}>
-                                {data.message.length<=30?data.message:data.message.substring(0,20) + "..."}
-                                    </p1>
-                             </Row>
-                            </div>
+                               <MessageList conversation = {data} onChangeActualConversation = {this.onChangeActualConversation} />                              
+                                </div>
                                
                                 :
                                 <>
@@ -110,17 +110,13 @@ class MyMessages extends React.Component{
                                 </>
                             )
                             }
-             
-                              
-
-      
 
                             )
                         }
                         
                         </Col>
-                        <Col className = "p-0" style = {{marginTop:"auto"}}> 
-                        <MessageChat actualConversation={actualConversation}/>
+                        <Col className = "p-0" style = {{marginTop: "auto"}}> 
+                        <MessageChat actualConversation={this.state.actualConversation}/>
                         </Col>
                         </Row>
             <Row className ="mt-auto">

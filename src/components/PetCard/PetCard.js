@@ -7,7 +7,10 @@ import { withRouter } from 'react-router-dom';
 class PetCard extends Component {
 constructor(props){
     super(props);
+
 }
+
+
 
 render() {
   const {Pet} = this.props;
@@ -20,8 +23,8 @@ onClick = {() => this.props.history.push({
   state: {petInfo: Pet}
   })}
 >
-<Card className="text-center mx-auto" >
-  <Card.Img  variant="top" src = {img_url} />
+<Card className="text-center mx-auto">
+  <Card.Img  variant="top" src = {img_url} style={{maxHeight:"200px"}}/>
   <Card.Body>
     <Card.Title>{Pet.animalname}</Card.Title>
     <Card.Text> {Pet.location}   </Card.Text>

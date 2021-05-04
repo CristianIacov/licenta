@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavbarPage from '../NavigationBar/NavigationBar';
 import SearchBar from '../SearchBar/SearchBar';
 import Signin from '../Signin/Signin';
@@ -9,9 +9,7 @@ import AdvertsSearchBar from '../AdvertsSearchBar/AdvertsSearchBar'
 import './HomePage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDog } from '@fortawesome/free-solid-svg-icons'
-
 import {Container,Row,Col,Button} from 'react-bootstrap';
-
 import {Link, NavLink, RouteComponentProps } from 'react-router-dom';
 
  class HomePage extends React.Component{
@@ -19,6 +17,7 @@ import {Link, NavLink, RouteComponentProps } from 'react-router-dom';
   constructor(){
     super();
     this.state= {
+      nbOfAnimalsSave:'',
       lastAnnounces: [{
         path:'def'
       },
@@ -65,6 +64,12 @@ import {Link, NavLink, RouteComponentProps } from 'react-router-dom';
   };
 
   componentDidMount(){
+    fetch('http://localhost:3001/savedanimals')
+    .then(response => response.json())
+    .then(data => this.setState({nbOfAnimalsSave: data}))
+    .catch(err => {})
+
+
     fetch('http://localhost:3001/lastannounces')
     .then(response => response.json())
     .then(announces => {
@@ -91,7 +96,7 @@ import {Link, NavLink, RouteComponentProps } from 'react-router-dom';
              </Row>
           <Row  noGutters className = "row">
             <Col >
-              <CarouselPage />
+              <CarouselPage nbOfAnimalsSave = {this.state.nbOfAnimalsSave}/>
              </Col>
           </Row>
           <Row>
