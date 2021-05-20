@@ -63,13 +63,11 @@ class MyMessages extends React.Component{
 
 /*functions that checks if the message has already been displayed */
   containsMessage = (uniqueValues,entry) => {
-
     for(var i  = 0 ; i < uniqueValues.length ; i++)
         if( uniqueValues[i].advertId == entry.advertId && uniqueValues[i].sourceUser == entry.sourceUser && uniqueValues[i].destinationUser == entry.destinationUser )
         return true;
     
     return false;
-
   }
 
   onChangeActualConversation = (data) => {

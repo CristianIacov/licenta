@@ -1,7 +1,7 @@
 import React from "react";
 import './Footer.css';
-
-const FooterPage = () => {
+import { withRouter } from 'react-router-dom';
+const FooterPage = ({history}) => {
   return (
 
     <div id="footer">
@@ -10,8 +10,12 @@ const FooterPage = () => {
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<h5>Adopta un animalut</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a ><i class="fa fa-angle-double-right"></i>Adopta un caine</a></li>
-						<li><a ><i class="fa fa-angle-double-right"></i>Adopta o pisica</a></li>
+						<li><a
+						onClick = {() => history.push('/AdoptDog')}><i 
+						class="fa fa-angle-double-right"></i>Adopta un caine</a></li>
+						<li><a
+						onClick = {() => history.push('/AdoptCat')}
+						><i class="fa fa-angle-double-right"></i>Adopta o pisica</a></li>
 						<li><a ><i class="fa fa-angle-double-right"></i>Adopta alte animale</a></li>
 					</ul>
 				</div>
@@ -58,4 +62,4 @@ const FooterPage = () => {
   );
 }
 
-export default FooterPage;
+export default withRouter(FooterPage);

@@ -44,11 +44,12 @@ onSubmitRegister = () => {
   .then(response => response.json())
   .then(data => {
     if(data.email == this.state.email){
-    window.alert('Contul a fost inregistrat');
-    this.props.history.push('/');
-    console.log(data);}
+      window.alert('Contul a fost inregistrat');
+      this.props.history.push('/');
+      console.log(data);
+  }
   else{
-    window.alert('Adaugati campurile necesare!');
+      window.alert('Adaugati campurile necesare!');
   }}
     )
   .catch(err => {
@@ -70,9 +71,8 @@ render() {
                   </Col>
               </Row>
               <div className = "formdiv">
-  <form>
+          <form>
                 <h3>Inregistrare cont</h3>
-
                 <div className="form-group">
                     <label>Nume</label>
                     <input

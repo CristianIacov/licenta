@@ -49,29 +49,42 @@ render() {
     <div className="navbarcomp">
     <Container  className = "buttonscontainer">
     <Row >
+      {/* 
+      onClick = {() => this.props.history.push({
+  pathname: `/AdvertPage/${Pet.id}`,
+  state: {petInfo: Pet}
+  })}*/ }
       <Col align = "right" >
         { isSignedIn === true?
-      <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push("/MyAdverts")} variant="Light">
+      <Button className ="custombuttons  btn-lg"  
+        onClick = {() => {
+        localStorage.setItem('userAdvert', JSON.stringify(this.props.user));
+        this.props.history.push({          
+          pathname:`/MyAdverts/${this.props.user.id}`}
+          )
+          }
+          } 
+          variant="Light">
             <FontAwesomeIcon className = "fontawesome" color = "green" icon={faCommentAlt}  size="1x" /> 
-        Anunțurile mele
-        </Button>
-      :
-      <div></div>
-        }
-    
-      { isSignedIn === false?  
-      <div>
-              <Button className ="custombuttons  btn-lg" onClick = {() => this.props.history.push('/Register')} variant="Light">
-      <FontAwesomeIcon className = "fontawesome" color = "green" icon={faUserCog}  size="1x" /> 
-      Contul Meu
-      </Button>{' '} 
-      <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push('/Signin')} variant="Light">
-      <FontAwesomeIcon  className = "fontawesome" color = "green" icon={faSignInAlt}  size="1x" /> 
-        Conectare
-        </Button>
-        </div>
-        :
-        <>
+            Anunțurile mele
+            </Button>
+          :
+          <div></div>
+            }
+        
+          { isSignedIn === false?  
+          <div>
+                  <Button className ="custombuttons  btn-lg" onClick = {() => this.props.history.push('/Register')} variant="Light">
+          <FontAwesomeIcon className = "fontawesome" color = "green" icon={faUserCog}  size="1x" /> 
+          Contul Meu
+          </Button>{' '} 
+          <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push('/Signin')} variant="Light">
+          <FontAwesomeIcon  className = "fontawesome" color = "green" icon={faSignInAlt}  size="1x" /> 
+            Conectare
+            </Button>
+            </div>
+              :
+              <>
               <Button className ="custombuttons  btn-lg"  onClick = {() => this.props.history.push("/MyMessages")} variant="Light">
             <FontAwesomeIcon className = "fontawesome" color = "green" icon={faEnvelopeSquare}  size="1x" /> 
         Mesajele Mele
@@ -100,9 +113,15 @@ render() {
       <Nav.Link 
       onClick = {() => this.props.history.push("/")} 
       className="navbarfirst" href="#home">Acasă</Nav.Link>
-      <Nav.Link className="navbar-nav" href="#shelters">Adăposturi</Nav.Link>
-      <Nav.Link className="navbar-nav" href="#caini">Îngrijire Câini</Nav.Link>
-      <Nav.Link className="navbar-nav" href="#pisici">Îngrijire Pisici</Nav.Link>
+      <Nav.Link 
+      onClick = {() => this.props.history.push("/Shelters")}
+      className="navbar-nav">Adăposturi si Alte Anunțuri</Nav.Link>
+      <Nav.Link 
+       onClick = {() => this.props.history.push('/AdoptDog')}
+      className="navbar-nav">Îngrijire Câini</Nav.Link>
+      <Nav.Link 
+      onClick = {() => this.props.history.push('/AdoptCat')}
+      className="navbar-nav">Îngrijire Pisici</Nav.Link>
 
       <Nav.Link className="navbar-nav"onClick = {() => {
         if(isSignedIn === true)

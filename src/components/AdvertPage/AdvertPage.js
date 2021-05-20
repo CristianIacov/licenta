@@ -86,7 +86,7 @@ onSubmitRating = () => {
    .then(data => {
     if(data == 'ok'){
       window.alert('Anuntul a fost sters');
-      this.props.history.push('/MyAdverts');
+      this.props.history.push('/');
     }
     else{
       window.alert('Anuntul nu a putut fi sters');
@@ -158,13 +158,13 @@ render() {
                   </Row>
             </Container>      
  
-                  <Row  >
+            <Row  >
             <Col  className = "mt-5">
-              <PetCarousel
-              img1_url = {"http://localhost:3001/"+ photo1}
-              img2_url = {"http://localhost:3001/"+ photo2}
-              img3_url = {"http://localhost:3001/"+ photo3}
-              />
+                <PetCarousel
+                img1_url = {"http://localhost:3001/"+ photo1}
+                img2_url = {"http://localhost:3001/"+ photo2}
+                img3_url = {"http://localhost:3001/"+ photo3}
+                />
              </Col>
             </Row>
             
@@ -205,7 +205,14 @@ render() {
               :
               <div>
               <a
-              type="submit" className="btn btn-success btn-sm btn-bottom">Vezi anunturile vanzatorului</a>
+                onClick = {() => {
+                  localStorage.setItem('userAdvert', JSON.stringify(petInfo));
+                  this.props.history.push({          
+                  pathname:`/MyAdverts/${petInfo.id}`})
+                  }
+                } 
+                type="submit" 
+                className="btn btn-success btn-sm btn-bottom">Vezi anunturile vanzatorului</a>
               <br></br>
               <a
               onClick = {() => this.setState({ratingModalShow:true})}
@@ -238,7 +245,7 @@ render() {
                 >
                   <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                      Ofera un raiting pentru {petInfo.firstname}
+                      Ofera un rating pentru {petInfo.firstname}
                     </Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
@@ -254,7 +261,7 @@ render() {
                     onClick = {() => {
                       this.onSubmitRating();
                       this.setState({ratingModalShow:false})}}
-                    className = "mx-auto" variant ="success">Ofera raiting</Button>
+                    className = "mx-auto" variant ="success">Ofera rating</Button>
                   </Modal.Footer>
                 </Modal>
 
@@ -296,7 +303,7 @@ render() {
                      <Button 
                     onClick = { () => {
                       this.onSubmitDelete();
-                      this.setState({modalShow:false});                     
+                      this.setState({modalShow:false});                    
                     }}
                     className = "mx-auto" variant ="success">Sterge anuntul</Button>
                   </Modal.Body>

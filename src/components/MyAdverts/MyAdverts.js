@@ -31,10 +31,10 @@ class MyAdverts extends Component {
 
 componentDidMount() {
   /* Whe refreshing, the adverts for a user will be refreshed aswell */
-  const loggedInUser = localStorage.getItem("user");
+  const userAdvert = localStorage.getItem("userAdvert");
   var foundUser;
-  if (loggedInUser) {
-     foundUser = JSON.parse(loggedInUser).email;
+  if (userAdvert) {
+     foundUser = JSON.parse(userAdvert).email;
   }
   else{
      foundUser = this.props.user.email;
@@ -59,6 +59,7 @@ componentDidMount() {
 
 render() {
     const { allAdverts } = this.state;
+    const userAdvert = localStorage.getItem("userAdvert");
   return (
 
     <Container fluid={true} className= "p-0">
@@ -67,6 +68,16 @@ render() {
               <NavbarPage />
           </Col>
           </Row>
+
+            <Col sm="4" md="4" className = "mx-auto mt-5 mb-5">
+              {
+                JSON.parse(userAdvert).email == this.props.user.email?
+                <h2 className = "fs-1"> Anunturile mele </h2>
+                :
+                <h2 className = "fs-1"> Anunturile lui {JSON.parse(userAdvert).firstname} {JSON.parse(userAdvert).lastname}</h2>
+              }
+            </Col>
+
     {
         allAdverts.map((data) => {
             return(

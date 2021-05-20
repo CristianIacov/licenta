@@ -24,7 +24,7 @@ onClick = {() => this.props.history.push({
   })}
 >
 <Card className="text-center mx-auto">
-  <Card.Img  variant="top" src = {img_url} style={{maxHeight:"200px"}}/>
+  <Card.Img  variant="top" src = {img_url} style = {{maxHeight:"300px",minHeight:"300px"}}/>
   <Card.Body>
     <Card.Title>{Pet.animalname}</Card.Title>
     <Card.Text> {Pet.location}   </Card.Text>

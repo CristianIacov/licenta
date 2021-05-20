@@ -5,7 +5,8 @@ import {Container,Row,Col,Button, Form} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import { connect } from 'react-redux';
 import { setSignedIn, LoggedInUser } from '../../actions.js';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faImage } from '@fortawesome/free-solid-svg-icons'
 const mapStateToProps = (state) => {
   return {
     isSignedIn: state.setSignedIn.isSignedIn,
@@ -143,7 +144,8 @@ return (
         label=""
         data-browse=""
         custom
-      />     
+      />    
+
             <Form.File 
         id="photo2"
         label=""

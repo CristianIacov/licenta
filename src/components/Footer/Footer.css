@@ -5,7 +5,7 @@
 body {
     display: grid;
     /* Replace 80 with your footer height, or with auto for variable-height footers */
-    grid-template-rows: 1fr 500px;
+    grid-template-rows: 1fr 600px;
     /* These two are important */
     min-height: 100vh;
     position: relative;

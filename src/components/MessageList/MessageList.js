@@ -18,14 +18,13 @@ class MessageList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            conversationDisplayed: {}
+            conversationDisplayed: {},
+            userName: ''
         }
 
     }
 
-    render(){
-
-   
+    render(){  
         return(
                         <div>
                             <Row className ="mb-3" style = {{borderBottom: "1px solid black"}} >
@@ -34,7 +33,7 @@ class MessageList extends React.Component{
                                  onClick = {() => this.props.onChangeActualConversation(this.props.conversation)}
                                  className ="custombuttons  btn-lg"   variant="Light">
                                 <FontAwesomeIcon  className = "fontawesome" icon={faUserCircle}  size="2x" />   
-                                {this.props.conversation.sourceUser}
+                                 {this.props.conversation.sourceUser}
                                 </Button>  
                                 </Col>
                                 <p1 className = "fs-3" style={{"margin-left":"50px"}}>

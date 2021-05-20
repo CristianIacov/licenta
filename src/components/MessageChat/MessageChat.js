@@ -74,8 +74,6 @@ class MessageChat extends React.Component{
 
 componentDidUpdate(prevProps){
     if (this.props != prevProps) {   // So that the method componentDidUpdate doesnt get recalled and slow down the cpu
-    console.log('convesatia');
-    console.log(this.props.actualConversation);
     fetch('http://localhost:3001/conversation',{
         method: 'post',
         headers: {'Content-Type': 'application/json'},
@@ -138,6 +136,8 @@ componentDidUpdate(prevProps){
                                 }
                                     )
                             }
+                            <Row>
+                                <Col className = "mb-3">
                         <FormControl
                         id = "textinput"
                         onChange = {this.onMessageChange}  
@@ -146,14 +146,12 @@ componentDidUpdate(prevProps){
                                 this.onMessageSend();
                                 document.getElementById("textinput").value = '';
                             }
-                        else{
-                            window.alert('Nu esti logat')
-                        }
                         }}                  
                             style={{border: "0.5px solid black", height: "75px"}}
                             placeholder = "Trimite un mesaj"
                             aria-describedby="basic-addon1" />
-
+                                </Col>
+                            </Row>
                        </div>
 
 

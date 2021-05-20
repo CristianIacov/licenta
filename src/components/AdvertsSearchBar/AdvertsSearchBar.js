@@ -44,7 +44,7 @@ render() {
 
 
              <InputGroup 
-             style = {{width: "1000px", height: "75px",margins :"auto",}}
+             style = {{width: "1000px", height: "100px",margins :"auto",}}
              className="mx-auto mt-5">
                 <FormControl
                 onChange = {this.onSearchChange}
