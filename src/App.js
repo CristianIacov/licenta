@@ -13,11 +13,13 @@ import AllAdverts from './components/AllAdverts/AllAdverts';
 import AdoptCat from './components/AdoptCat/AdoptCat';
 import AdoptDog from './components/AdoptDog/AdoptDog';
 import Shelters from './components/Shelters/Shelters'
+
  class App extends React.Component{
 
 
   render()
-  {
+  { 
+
     return(
       <Router>
         <Switch>

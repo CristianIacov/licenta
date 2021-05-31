@@ -6,10 +6,28 @@ import { faCat } from '@fortawesome/free-solid-svg-icons'
 import NavbarPage from '../NavigationBar/NavigationBar';
 import './Shelters.css';
 import FooterPage from '../Footer/Footer'
+import PlacesAutocomplete, {
+    geocodeByAddress,
+    getLatLng
+} from "react-places-autocomplete";
+
+
 const Shelters = () => {
+
 const [pet,setPet] = useState('');
 const [location, setLocation] = useState({});
 const [urls, setUrls] = useState([]);
+const [address,setAddress] = useState('');
+
+
+
+
+const handleSelect = async (value) => {
+    const results = await geocodeByAddress(value);
+    setLocation(results);
+    setAddress(value);
+    document.getElementById("formcontrol").innerHTML = results;
+}
 
 const onSubmitSearch = () => {
     fetch('http://localhost:3001/crawler',{
@@ -49,38 +67,70 @@ const onLocationChange = (event) => {
                     <h2 className = "title">Va rugam sa introduceti localitatea si sa apasati pe animalutul dorit.</h2>
                 </Col>
             </Row>
-            <Row>
-                <Col sm = {{offset:3, span:9}} md = {{offset:3, span:9}}>
-                <InputGroup 
-                    style = {{width: "1000px", height: "100px",}}
-                    className="mt-5">
-                        <FormControl
-                        onChange = {onLocationChange}
-                        style={{border: "0.5px solid black"}} 
-                        placeholder = "Introduceti Localitatea sau Judetul"
-                        aria-describedby="basic-addon1" />
+            <PlacesAutocomplete
+                                    value= {address}
+                                    onChange = {setAddress}
+                                    onSelect = {handleSelect}
+                                >
+                                    {({  getInputProps, suggestions, getSuggestionItemProps, loading  }) => (
+                                        <div>
+                                                <Row>
+                                                 <Col sm = {{offset:3, span:9}} md = {{offset:3, span:9}}>
+                                                <InputGroup 
+                                                    style = {{width: "1000px", height: "100px",}}
+                                                    className="mt-5">
+                                                        <FormControl
+                                                        onChange={onLocationChange}
+                                                        {...getInputProps({ placeholder: "Type address" })} 
+                                                        id = "formcontrol"
+                                                        style={{border: "0.5px solid black"}} 
+                                                        placeholder = "Introduceti Localitatea sau Judetul"
+                                                        aria-describedby="basic-addon1" />
 
-                        <Button 
-                        onClick = {async () => {
-                            await setPet('caini');
-                            onSubmitSearch();
-                        }}
-                        variant="outline-secondary btn-lg">
-                        <FontAwesomeIcon icon={faDog} color="green" size="3x" /> 
-                        Caini
-                        </Button>
-                        <Button 
-                        onClick = {async () => {
-                            await setPet('pisici');
-                            onSubmitSearch();
-                        }}
-                        variant="outline-secondary btn-lg">
-                 <FontAwesomeIcon icon={faCat} color="green" size="3x" /> 
-                Pisici
-                </Button>
-                </InputGroup>
-                </Col>
-            </Row>
+                                                        <Button 
+                                                        onClick = {async () => {
+                                                            await setPet('caini');
+                                                            onSubmitSearch();
+                                                        }}
+                                                        variant="outline-secondary btn-lg">
+                                                        <FontAwesomeIcon icon={faDog} color="green" size="3x" /> 
+                                                        Caini
+                                                        </Button>
+                                                        <Button 
+                                                        onClick = {async () => {
+                                                            await setPet('pisici');
+                                                            onSubmitSearch();
+                                                        }}
+                                                        variant="outline-secondary btn-lg">
+                                                <FontAwesomeIcon icon={faCat} color="green" size="3x" /> 
+                                                Pisici
+                                                </Button>
+                                                </InputGroup>
+                                                </Col>
+                                            </Row>
+                                            <div>
+                                {loading ? <div>...loading</div> : null}
+
+                                {suggestions.map(suggestion => {
+                                        const style = {
+                                         backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
+                                          };
+
+                                    return (
+                                    <div {...getSuggestionItemProps(suggestion,{ style })}>
+                                         <Row>
+                                            <Col sm = {{offset:3, span:9}} md = {{offset:3, span:9}}>
+                                                <p1 className = "fs-3">{suggestion.description}</p1>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                    );
+                                })}
+                                </div>
+                            </div>
+                            )}
+                        </PlacesAutocomplete>
+           
             {
                 urls.map(data => {
                     return (
